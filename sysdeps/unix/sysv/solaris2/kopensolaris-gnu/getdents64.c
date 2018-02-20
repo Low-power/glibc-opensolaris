@@ -18,16 +18,20 @@
    02111-1307 USA.  */
 
 #include <sys/types.h>
+#include <sysdep.h>
 
 #define __KERNEL_DIRENT
-struct kernel_dirent
+struct kernel_dirent64
   {
     __ino64_t d_ino;
     __off64_t d_off;
     unsigned short d_reclen;
     char d_name[1];
   };
+#define kernel_dirent kernel_dirent64
 
+DECLARE_INLINE_SYSCALL(int, getdents64, int, struct kernel_dirent64 *, size_t);
+#define __SYSCALL_GETDENTS __syscall_getdents64
 #define __GETDENTS __getdents64
 #define DIRENT_TYPE struct dirent64
-#include <sysdeps/unix/sysv/linux/getdents.c>
+#include <sysdeps/unix/sysv/solaris2/kopensolaris-gnu/getdents.c>
