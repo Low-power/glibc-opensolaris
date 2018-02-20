@@ -4329,15 +4329,15 @@ if test -n "$path_binutils"; then
     path_binutils=`(cd $path_binutils; pwd) | sed 's%/*$%/%'`
     CC="$CC -B$path_binutils"
 fi
-AS=`$CC -print-prog-name=as`
-LD=`$CC -print-prog-name=ld`
-AR=`$CC -print-prog-name=ar`
+[ -z "$AS" ] && AS=`$CC --print-prog-name=as`
+[ -z "$LD" ] && LD=`$CC --print-prog-name=ld`
+[ -z "$AR" ] && AR=`$CC --print-prog-name=ar`
 
-OBJDUMP=`$CC -print-prog-name=objdump`
+[ -z "$OBJDUMP" ] && OBJDUMP=`$CC --print-prog-name=objdump`
 
 
 # ranlib has to be treated a bit differently since it might not exist at all.
-ac_ranlib=`$CC -print-prog-name=ranlib`
+ac_ranlib=`$CC --print-prog-name=ranlib`
 if test "x$ac_ranlib" = xranlib; then
 # This extra check has to happen since gcc simply echos the parameter in
 # case it cannot find the value in its own directories.

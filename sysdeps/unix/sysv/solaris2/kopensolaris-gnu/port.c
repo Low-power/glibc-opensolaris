@@ -21,6 +21,10 @@
 #include <port.h>
 #include <sys/port_impl.h>
 
+#ifndef MIN
+#define MIN(A,B) ((A)<(B)?(A):(B))
+#endif
+
 /* SYS_port returns a 64-bit int but the port_* calls return a 32-bit int, so
    we can't implement these directly in syscalls.list.  Whenever the 2nd
    argument is not a port we need to specify PORT_SYS_NOPORT.

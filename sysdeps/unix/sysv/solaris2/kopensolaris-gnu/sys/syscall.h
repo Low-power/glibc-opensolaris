@@ -62,7 +62,7 @@
 #define SYS_fstatfs         38
 #define SYS_pgrpsys         39
 #define SYS_uucopystr       40
-#define SYS_dup             41
+//#define SYS_dup             41
 #define SYS_pipe            42
 #define SYS_times           43
 #define SYS_profil          44
